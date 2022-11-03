@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { Alert, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -15,15 +15,18 @@ export default function App() {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
-
-            if (route.name === 'Home') {
-              iconName = focused
+            switch (route.name) {
+              case 'Home':
+                iconName = focused
                 ? 'ios-home'
                 : 'ios-home-outline';
-            } else if (route.name === 'Settings') {
-              iconName = focused ? 'ios-cog' : 'ios-cog-outline';
+                break;
+              case 'Settings':
+                iconName = focused ? 'ios-cog' : 'ios-cog-outline';
+                break;
+              default: Alert.alert('404 Not Found');
+                break;
             }
-
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
