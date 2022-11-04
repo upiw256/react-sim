@@ -1,82 +1,12 @@
-import React from 'react';
-import { View, StyleSheet, ScrollView, Text } from 'react-native';
-import { FormBuilder } from 'react-native-paper-form-builder';
-import { useForm } from 'react-hook-form';
-import { Button } from 'react-native-paper';
+import { Text, View } from 'react-native'
+import React, { Component } from 'react'
 
-function Setting() {
-  const { control, setFocus, handleSubmit } = useForm({
-    defaultValues: {
-      email: '',
-      password: '',
-    },
-    mode: 'onChange',
-  });
-
-  return (
-    <View style={styles.containerStyle}>
-      <ScrollView contentContainerStyle={styles.scrollViewStyle}>
-        <Text style={styles.headingStyle}>Login Aplikasi</Text>
-        <FormBuilder
-          control={control}
-          setFocus={setFocus}
-          formConfigArray={[
-            {
-              type: 'email',
-              name: 'email',
-
-              rules: {
-                required: {
-                  value: true,
-                  message: 'Email is required',
-                },
-              },
-              textInputProps: {
-                label: 'Email',
-              },
-            },
-            {
-              type: 'password',
-              name: 'password',
-              rules: {
-                required: {
-                  value: true,
-                  message: 'Password is required',
-                },
-              },
-              textInputProps: {
-                label: 'Password',
-              },
-            },
-          ]}
-        />
-        <Button
-          mode={'contained'}
-          onPress={handleSubmit((data) => {
-            console.log('form data', data);
-          })}
-        >
-          Submit
-        </Button>
-      </ScrollView>
-    </View>
-  );
+export default class Setting extends Component {
+  render() {
+    return (
+      <View>
+        <Text>Setting !</Text>
+      </View>
+    )
+  }
 }
-
-const styles = StyleSheet.create({
-  containerStyle: {
-    flex: 1,
-  },
-  scrollViewStyle: {
-    flex: 1,
-    padding: 15,
-    justifyContent: 'center',
-  },
-  headingStyle: {
-    fontSize: 30,
-    textAlign: 'center',
-    marginBottom: 40,
-  },
-});
-
-export default Setting;
